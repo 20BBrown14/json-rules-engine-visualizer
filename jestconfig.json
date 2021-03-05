@@ -1,0 +1,31 @@
+{
+  "setupFiles": [
+    "./jestsetup.js"
+  ],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json"],
+  "moduleDirectories": [
+    "<rootDir>/node_modules"
+  ],
+  "testMatch": [
+    "<rootDir>/tests/**/(*.)(test).js?(x)"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules"
+  ],
+  "snapshotSerializers": [
+    "<rootDir>/node_modules/enzyme-to-json/serializer"
+  ],
+  "collectCoverage": true,
+  "collectCoverageFrom": ["src/**/*.{js,jsx}"],
+  "coveragePathIgnorePatterns": [
+    "src/index.jsx",
+    "src/stories"
+  ],
+  "moduleNameMapper": {
+    "\\.(svg|gif|png)$": "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css)$": "<rootDir>/__mocks__/styleMock.js"
+  },
+  "coverageReporters": ["html", "text-summary", "lcov"],
+  "coverageDirectory": "<rootDir>/tests/jest/reports/coverage",
+  "testResultsProcessor": "<rootDir>/node_modules/jest-junit-reporter"
+}
