@@ -1,6 +1,6 @@
 # JSON Rules Engine Visualiser
 
-JSON Rules Engine Visualiser is a UI for visualising and editing rules as defined by (json-rules-engine)[https://github.com/CacheControl/json-rules-engine]. You can add this component to your project and edit rules without the need to redeploy the js code utilizing them. 
+JSON Rules Engine Visualiser is a UI for visualising and editing rules as defined by [json-rules-engine](https://github.com/CacheControl/json-rules-engine). You can add this component to your project and edit rules without the need to redeploy the js code utilizing them. 
 
 ## Getting Started
 
