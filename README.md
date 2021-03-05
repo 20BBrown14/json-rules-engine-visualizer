@@ -6,10 +6,10 @@ JSON Rules Engine Visualiser is a UI for visualising and editing rules as define
 
 ### Information
 
-This project uses [Storybook](https://storybook.js.org/) for local develop and component demos. This library provides an easy and robust way to see our components and interact with them. More information on how to use Storybook below.
+This project uses [Storybook](https://storybook.js.org/) for local development and component demos. This library provides an easy and robust way to see our components and interact with them. More information on how to use Storybook below.
 
 ### Node and NPM Version
-After cloning the project be sure you're the correct version of npm and node: **lts/fermium**
+After cloning the project be sure you're using the correct version of npm and node: **lts/fermium**
 
 ### Install dependencies and running
 1. Run `npm install` to install requierd dependencies
