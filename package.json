@@ -1,5 +1,5 @@
 {
-  "name": "json-rules-engine-visualizer",
+  "name": "json-rules-engine-visualiser",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,13 +17,14 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^4.0.0-alpha.11",
-    "scplus-shared-components": "https://npm-public.selectquotelabs.com/scplus-shared-components/5.4.0",
     "@selectquotelabs/sqform": "^4.0.0",
+    "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^16.14.0",
     "react-refresh": "^0.8.3",
+    "scplus-shared-components": "https://npm-public.selectquotelabs.com/scplus-shared-components/5.4.0",
     "yup": "^0.32.9"
   },
   "peerDependencies": {

@@ -12,5 +12,11 @@ global.render = render;
 global.mount = mount;
 window.matchMedia = () => {};
 
+// Suppress useLayoutEffect warnings in Jest. MUI issue.
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
+
 const htmlTag = document.getElementsByTagName('html')[0];
 htmlTag.setAttribute('dir', 'ltr');
