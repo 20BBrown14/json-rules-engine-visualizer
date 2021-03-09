@@ -30,7 +30,7 @@ More information: https://storybook.js.org/docs/react/api/cli-options#build-stor
 
 ### `npm run lint`
 
-Run ESLint and StyleLint on all js, jsx, and style files. This script runs `lint:js` and `lint:css` both of which can be ran seperately.
+Run ESLint on all js, and jsx files.
 
 ### `npm run nuke`
 

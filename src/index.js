@@ -1,1 +1,1 @@
-export { default as JSONRulesEngineVisualiser } from './components/JSONRulesEngineVisualiser';
+export default from './components/JSONRulesEngineVisualiser';

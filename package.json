@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "build-storybook": "build-storybook",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:css": "stylelint src/**/*.css",
+    "lint": "npm run lint:js",
     "lint:js": "eslint --ext .js,.jsx .",
     "nuke": "./scripts/nuke.sh",
     "storybook": "start-storybook --ci -p 6006",

@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RuleGroup renders properly 1`] = `
+<form
+  action="#"
+>
+  <div
+    class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+  >
+    <div
+      class="MuiGrid-root makeStyles-groupGrid-1 MuiGrid-container MuiGrid-spacing-xs-2"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          id="boolean expression"
+        >
+          Boolean Expression
+        </label>
+        <div
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+        >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="boolean expression mui-component-select-someName_expression"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+            id="mui-component-select-someName_expression"
+            role="button"
+            tabindex="0"
+          >
+            - -
+          </div>
+          <input
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            name="someName_expression"
+            tabindex="-1"
+            value=""
+          />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+        <p
+          class="MuiFormHelperText-root"
+        >
+          <span>
+            ​
+          </span>
+        </p>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add Group
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add Rule
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Remove
+          </span>
+        </button>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
+      />
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-1"
+      />
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-11"
+      >
+        <div
+          class="MuiGrid-root makeStyles-nestedGroupGrid-2 MuiGrid-container MuiGrid-spacing-xs-4"
+        />
+      </div>
+    </div>
+  </div>
+</form>
+`;
