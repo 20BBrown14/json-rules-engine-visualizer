@@ -5,7 +5,7 @@ import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
 import RuleItem from '../src/components/RuleItem';
 
 export default {
-  title: 'JSON Rules Engine Visualiser',
+  title: 'Rule Item',
 };
 
 const defaultSubmitHandler = (formValues) => {
@@ -13,7 +13,7 @@ const defaultSubmitHandler = (formValues) => {
   window.alert(JSON.stringify(formValues, null, 2));
 };
 
-export const visualiser = () => {
+export const ruleItem = () => {
   const initialValues = {
     testRule_factName: '',
     testRule_operator: '',
@@ -27,14 +27,16 @@ export const visualiser = () => {
   };
 
   return (
-    <Card raised style={{ padding: 16 }}>
+    <Card raised style={{ padding: 16, flex: 1 }}>
       <SQForm
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={defaultSubmitHandler}
         muiGridProps={{ spacing: 4 }}
       >
-        <RuleItem ruleName="testRule" />
+        <Grid item sm={12}>
+          <RuleItem ruleName="testRule" />
+        </Grid>
         <Grid item sm={12}>
           <Grid container justify="flex-end">
             <SQFormButton>Submit</SQFormButton>

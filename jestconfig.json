@@ -21,10 +21,6 @@
     "src/index.jsx",
     "src/stories"
   ],
-  "moduleNameMapper": {
-    "\\.(svg|gif|png)$": "<rootDir>/__mocks__/fileMock.js",
-    "\\.(css)$": "<rootDir>/__mocks__/styleMock.js"
-  },
   "coverageReporters": ["html", "text-summary", "lcov"],
   "coverageDirectory": "<rootDir>/tests/jest/reports/coverage",
   "testResultsProcessor": "<rootDir>/node_modules/jest-junit-reporter"

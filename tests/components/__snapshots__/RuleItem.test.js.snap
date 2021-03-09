@@ -8,30 +8,82 @@ exports[`RuleItem renders properly 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
+      class="MuiGrid-root makeStyles-itemGrid-1 MuiGrid-container MuiGrid-spacing-xs-2"
     >
       <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
+      >
+        <div
+          class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+            data-shrink="true"
+          >
+            <span>
+              Fact Name 
+            </span>
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiInput-input"
+              name="testRule_factName"
+              placeholder="Fact Name"
+              type="text"
+              value=""
+            />
+          </div>
+          <p
+            class="MuiFormHelperText-root"
+          >
+            <span>
+              ​
+            </span>
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
-          data-shrink="true"
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+          id="operator"
         >
-          <span>
-            Fact Name 
-          </span>
+          Operator
         </label>
         <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
         >
+          <div
+            aria-haspopup="listbox"
+            aria-labelledby="operator mui-component-select-testRule_operator"
+            class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+            id="mui-component-select-testRule_operator"
+            role="button"
+            tabindex="0"
+          >
+            - -
+          </div>
           <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiInput-input"
-            name="testRule_factName"
-            placeholder="Fact Name"
-            type="text"
+            aria-hidden="true"
+            class="MuiSelect-nativeInput"
+            name="testRule_operator"
+            tabindex="-1"
             value=""
           />
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
         </div>
         <p
           class="MuiFormHelperText-root"
@@ -41,88 +93,40 @@ exports[`RuleItem renders properly 1`] = `
           </span>
         </p>
       </div>
-    </div>
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
-    >
-      <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
-        id="operator"
-      >
-        Operator
-      </label>
       <div
-        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
       >
         <div
-          aria-haspopup="listbox"
-          aria-labelledby="operator mui-component-select-testRule_operator"
-          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-          id="mui-component-select-testRule_operator"
-          role="button"
-          tabindex="0"
+          class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
         >
-          - -
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+            data-shrink="true"
+          >
+            <span>
+              Value 
+            </span>
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiInput-input"
+              name="testRule_valueName"
+              placeholder="Value"
+              type="text"
+              value=""
+            />
+          </div>
+          <p
+            class="MuiFormHelperText-root"
+          >
+            <span>
+              ​
+            </span>
+          </p>
         </div>
-        <input
-          aria-hidden="true"
-          class="MuiSelect-nativeInput"
-          name="testRule_operator"
-          tabindex="-1"
-          value=""
-        />
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSelect-icon"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M7 10l5 5 5-5z"
-          />
-        </svg>
-      </div>
-      <p
-        class="MuiFormHelperText-root"
-      >
-        <span>
-          ​
-        </span>
-      </p>
-    </div>
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
-    >
-      <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-      >
-        <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
-          data-shrink="true"
-        >
-          <span>
-            Value 
-          </span>
-        </label>
-        <div
-          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiInput-input"
-            name="testRule_valueName"
-            placeholder="Value"
-            type="text"
-            value=""
-          />
-        </div>
-        <p
-          class="MuiFormHelperText-root"
-        >
-          <span>
-            ​
-          </span>
-        </p>
       </div>
     </div>
   </div>
