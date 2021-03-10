@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JSONRulesEngineVisualiser renders properly 1`] = `
+exports[`RuleGroupDisplay renders properly 1`] = `
 <form
   action="#"
 >
@@ -28,9 +28,9 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
           >
             <div
               aria-haspopup="listbox"
-              aria-labelledby="boolean expression mui-component-select-c4d53e5b-cb2c-4e9b-a82f-bf7a7b35468c_expression"
+              aria-labelledby="boolean expression mui-component-select-a_expression"
               class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-              id="mui-component-select-c4d53e5b-cb2c-4e9b-a82f-bf7a7b35468c_expression"
+              id="mui-component-select-a_expression"
               role="button"
               tabindex="0"
             >
@@ -39,7 +39,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
             <input
               aria-hidden="true"
               class="MuiSelect-nativeInput"
-              name="c4d53e5b-cb2c-4e9b-a82f-bf7a7b35468c_expression"
+              name="a_expression"
               tabindex="-1"
               value="any"
             />
@@ -142,7 +142,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                     <input
                       aria-invalid="false"
                       class="MuiInputBase-input MuiInput-input"
-                      name="73413e79-ed2e-4a16-9cea-f432a6aeda06_factName"
+                      name="b_factName"
                       placeholder="Fact Name"
                       type="text"
                       value="firstFact"
@@ -179,9 +179,9 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                 >
                   <div
                     aria-haspopup="listbox"
-                    aria-labelledby="operator mui-component-select-73413e79-ed2e-4a16-9cea-f432a6aeda06_operator"
+                    aria-labelledby="operator mui-component-select-b_operator"
                     class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    id="mui-component-select-73413e79-ed2e-4a16-9cea-f432a6aeda06_operator"
+                    id="mui-component-select-b_operator"
                     role="button"
                     tabindex="0"
                   >
@@ -190,7 +190,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                   <input
                     aria-hidden="true"
                     class="MuiSelect-nativeInput"
-                    name="73413e79-ed2e-4a16-9cea-f432a6aeda06_operator"
+                    name="b_operator"
                     tabindex="-1"
                     value="equal"
                   />
@@ -241,7 +241,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                     <input
                       aria-invalid="false"
                       class="MuiInputBase-input MuiInput-input"
-                      name="73413e79-ed2e-4a16-9cea-f432a6aeda06_value"
+                      name="b_value"
                       placeholder="Value"
                       type="text"
                       value="firstValue"
@@ -282,9 +282,9 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                 >
                   <div
                     aria-haspopup="listbox"
-                    aria-labelledby="boolean expression mui-component-select-f05e85fc-d860-4783-a9c0-30a4301a0957_expression"
+                    aria-labelledby="boolean expression mui-component-select-c_expression"
                     class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                    id="mui-component-select-f05e85fc-d860-4783-a9c0-30a4301a0957_expression"
+                    id="mui-component-select-c_expression"
                     role="button"
                     tabindex="0"
                   >
@@ -293,7 +293,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                   <input
                     aria-hidden="true"
                     class="MuiSelect-nativeInput"
-                    name="f05e85fc-d860-4783-a9c0-30a4301a0957_expression"
+                    name="c_expression"
                     tabindex="-1"
                     value="all"
                   />
@@ -396,7 +396,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                           <input
                             aria-invalid="false"
                             class="MuiInputBase-input MuiInput-input"
-                            name="f0a8f1f2-362b-46a3-aa03-8c5b599a91a9_factName"
+                            name="d_factName"
                             placeholder="Fact Name"
                             type="text"
                             value=""
@@ -425,9 +425,9 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                       >
                         <div
                           aria-haspopup="listbox"
-                          aria-labelledby="operator mui-component-select-f0a8f1f2-362b-46a3-aa03-8c5b599a91a9_operator"
+                          aria-labelledby="operator mui-component-select-d_operator"
                           class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
-                          id="mui-component-select-f0a8f1f2-362b-46a3-aa03-8c5b599a91a9_operator"
+                          id="mui-component-select-d_operator"
                           role="button"
                           tabindex="0"
                         >
@@ -436,7 +436,7 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                         <input
                           aria-hidden="true"
                           class="MuiSelect-nativeInput"
-                          name="f0a8f1f2-362b-46a3-aa03-8c5b599a91a9_operator"
+                          name="d_operator"
                           tabindex="-1"
                           value=""
                         />
@@ -479,7 +479,129 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
                           <input
                             aria-invalid="false"
                             class="MuiInputBase-input MuiInput-input"
-                            name="f0a8f1f2-362b-46a3-aa03-8c5b599a91a9_value"
+                            name="d_value"
+                            placeholder="Value"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                        <p
+                          class="MuiFormHelperText-root"
+                        >
+                          <span>
+                            ​
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root makeStyles-itemGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
+                  >
+                    <div
+                      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
+                    >
+                      <div
+                        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                      >
+                        <label
+                          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+                          data-shrink="true"
+                        >
+                          <span>
+                            Fact Name 
+                          </span>
+                        </label>
+                        <div
+                          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+                        >
+                          <input
+                            aria-invalid="false"
+                            class="MuiInputBase-input MuiInput-input"
+                            name="e_factName"
+                            placeholder="Fact Name"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                        <p
+                          class="MuiFormHelperText-root"
+                        >
+                          <span>
+                            ​
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated"
+                        id="operator"
+                      >
+                        Operator
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth"
+                      >
+                        <div
+                          aria-haspopup="listbox"
+                          aria-labelledby="operator mui-component-select-e_operator"
+                          class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+                          id="mui-component-select-e_operator"
+                          role="button"
+                          tabindex="0"
+                        >
+                          - -
+                        </div>
+                        <input
+                          aria-hidden="true"
+                          class="MuiSelect-nativeInput"
+                          name="e_operator"
+                          tabindex="-1"
+                          value=""
+                        />
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSelect-icon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M7 10l5 5 5-5z"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        class="MuiFormHelperText-root"
+                      >
+                        <span>
+                          ​
+                        </span>
+                      </p>
+                    </div>
+                    <div
+                      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
+                    >
+                      <div
+                        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                      >
+                        <label
+                          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink"
+                          data-shrink="true"
+                        >
+                          <span>
+                            Value 
+                          </span>
+                        </label>
+                        <div
+                          class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+                        >
+                          <input
+                            aria-invalid="false"
+                            class="MuiInputBase-input MuiInput-input"
+                            name="e_value"
                             placeholder="Value"
                             type="text"
                             value=""
@@ -500,30 +622,6 @@ exports[`JSONRulesEngineVisualiser renders properly 1`] = `
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div
-      class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12"
-    >
-      <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-justify-xs-flex-end"
-      >
-        <button
-          class="MuiButtonBase-root MuiButton-root MuiButton-contained roundedButton roundedButton--primary MuiButton-containedPrimary"
-          tabindex="0"
-          title="Form Submission"
-          type="submit"
-        >
-          <span
-            class="MuiButton-label"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-button"
-            >
-              Submit
-            </span>
-          </span>
-        </button>
       </div>
     </div>
   </div>
