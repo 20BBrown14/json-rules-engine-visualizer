@@ -113,10 +113,9 @@ exports[`RuleItem renders properly 1`] = `
             <input
               aria-invalid="false"
               class="MuiInputBase-input MuiInput-input"
-              name="testRule_valueName"
+              name="testRule_value"
               placeholder="Value"
               type="text"
-              value=""
             />
           </div>
           <p

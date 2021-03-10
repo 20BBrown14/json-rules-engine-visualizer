@@ -1,7 +1,7 @@
 import React from 'react';
 import RuleItem from '../../src/components/RuleItem';
-import getRuleItemInitialValues from '../util/getInitialValues';
-import SQFormWrapper from '../util/SQFormWrapper';
+import getRuleItemInitialValues from '../testUtils/getInitialValues';
+import SQFormWrapper from '../testUtils/SQFormWrapper';
 
 describe('RuleItem', () => {
   it('renders properly', () => {
