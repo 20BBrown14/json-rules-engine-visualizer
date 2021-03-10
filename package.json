@@ -24,6 +24,7 @@
     "react-dom": "^16.14.0",
     "react-refresh": "^0.8.3",
     "scplus-shared-components": "https://npm-public.selectquotelabs.com/scplus-shared-components/5.4.0",
+    "uuid": "^8.3.2",
     "yup": "^0.32.9"
   },
   "peerDependencies": {
@@ -34,6 +35,7 @@
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",

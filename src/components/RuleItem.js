@@ -11,7 +11,7 @@ const itemGridStyles = makeStyles({
     width: '100%',
     border: '1px solid #b3b3b3',
     marginBottom: '25px',
-    height: '72px',
+    height: '80px',
   },
 });
 
@@ -37,7 +37,7 @@ function RuleItem({
       </SQFormDropdown>
       <SQFormTextField
         size={4}
-        name={`${ruleName}_valueName`}
+        name={`${ruleName}_value`}
         label="Value"
         placeholder="Value"
       />

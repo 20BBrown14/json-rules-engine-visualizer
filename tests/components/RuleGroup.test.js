@@ -1,6 +1,6 @@
 import React from 'react';
 import RuleGroup from '../../src/components/RuleGroup';
-import SQFormWrapper from '../util/SQFormWrapper';
+import SQFormWrapper from '../testUtils/SQFormWrapper';
 
 describe('RuleGroup', () => {
   it('renders properly', () => {
