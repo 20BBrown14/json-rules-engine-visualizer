@@ -1,25 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
-import getRuleElementsFromSchema from '../util/getRuleElementsFromSchema';
+import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
+import getInitialValuesFromSchema from '../util/getInitialValuesFromSchema';
+import conditionSchemaPropType from '../util/proptypes';
+import RuleGroupDisplay from './RuleGroupDisplay';
 
 function JSONRulesEngineVisualiser({
   conditionSchema,
 }) {
   return (
-    <Grid item sm={12} style={{ margin: 10 }}>
-      {getRuleElementsFromSchema(conditionSchema)}
-    </Grid>
+    <SQForm initialValues={getInitialValuesFromSchema(conditionSchema)} onSubmit={() => {}}>
+      <RuleGroupDisplay conditionSchema={conditionSchema} />
+      <Grid item sm={12}>
+        <Grid container justify="flex-end">
+          <SQFormButton>Submit</SQFormButton>
+        </Grid>
+      </Grid>
+    </SQForm>
   );
 }
 
 JSONRulesEngineVisualiser.propTypes = {
-  conditionSchema: PropTypes.shape({
-    type: PropTypes.oneOf(['group', 'rule']).isRequired,
-    id: PropTypes.string.isRequired,
-    condition: PropTypes.oneOf(['any', 'all']),
-    children: PropTypes.arrayOf(PropTypes.object),
-  }).isRequired,
+  conditionSchema: conditionSchemaPropType,
 };
 
 export default JSONRulesEngineVisualiser;
