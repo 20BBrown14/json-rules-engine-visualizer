@@ -9,7 +9,7 @@ exports[`RuleGroupDisplay renders properly 1`] = `
   >
     <div
       class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12"
-      style="margin:10px"
+      style="margin:10px;margin-bottom:-25px"
     >
       <div
         class="MuiGrid-root makeStyles-groupGrid-1 MuiGrid-container MuiGrid-spacing-xs-2"
@@ -75,6 +75,7 @@ exports[`RuleGroupDisplay renders properly 1`] = `
         >
           <button
             class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+            id="a_addGroupButton"
             tabindex="0"
             type="button"
           >
@@ -95,17 +96,6 @@ exports[`RuleGroupDisplay renders properly 1`] = `
               Add Rule
             </span>
           </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
-            tabindex="0"
-            type="button"
-          >
-            <span
-              class="MuiButton-label"
-            >
-              Remove
-            </span>
-          </button>
         </div>
         <div
           class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-3"
@@ -120,7 +110,7 @@ exports[`RuleGroupDisplay renders properly 1`] = `
             class="MuiGrid-root makeStyles-nestedGroupGrid-2 MuiGrid-container MuiGrid-spacing-xs-4"
           >
             <div
-              class="MuiGrid-root makeStyles-itemGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
+              class="MuiGrid-root makeStyles-containerGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
             >
               <div
                 class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
@@ -329,6 +319,7 @@ exports[`RuleGroupDisplay renders properly 1`] = `
               >
                 <button
                   class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+                  id="c_addGroupButton"
                   tabindex="0"
                   type="button"
                 >
@@ -374,7 +365,7 @@ exports[`RuleGroupDisplay renders properly 1`] = `
                   class="MuiGrid-root makeStyles-nestedGroupGrid-2 MuiGrid-container MuiGrid-spacing-xs-4"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-itemGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
+                    class="MuiGrid-root makeStyles-containerGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
                   >
                     <div
                       class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
@@ -496,7 +487,7 @@ exports[`RuleGroupDisplay renders properly 1`] = `
                     </div>
                   </div>
                   <div
-                    class="MuiGrid-root makeStyles-itemGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
+                    class="MuiGrid-root makeStyles-containerGrid-4 MuiGrid-container MuiGrid-spacing-xs-2"
                   >
                     <div
                       class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"

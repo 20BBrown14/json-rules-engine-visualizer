@@ -8,9 +8,25 @@ import RuleGroupDisplay from './RuleGroupDisplay';
 function JSONRulesEngineVisualiser({
   conditionSchema,
 }) {
-  return (
-    <SQForm initialValues={getInitialValuesFromSchema(conditionSchema)} onSubmit={() => {}}>
-      <RuleGroupDisplay conditionSchema={conditionSchema} />
+  const [livingConditionSchema, setLivingConditionSchema] = React.useState(conditionSchema);
+
+  const initialValues = React.useMemo(() => (
+    getInitialValuesFromSchema(livingConditionSchema)
+  ), [getInitialValuesFromSchema, livingConditionSchema]);
+
+  const elements = (
+    <SQForm
+      id="json-rules-engine-visualiser-SQForm"
+      initialValues={initialValues}
+      onSubmit={() => {}}
+      enableReinitialize
+      key={`SQForm_${initialValues.length}`}
+    >
+      <RuleGroupDisplay
+        initialValues={initialValues}
+        livingConditionSchema={livingConditionSchema}
+        setLivingConditionSchema={setLivingConditionSchema}
+      />
       <Grid item sm={12}>
         <Grid container justify="flex-end">
           <SQFormButton>Submit</SQFormButton>
@@ -18,6 +34,8 @@ function JSONRulesEngineVisualiser({
       </Grid>
     </SQForm>
   );
+
+  return elements;
 }
 
 JSONRulesEngineVisualiser.propTypes = {

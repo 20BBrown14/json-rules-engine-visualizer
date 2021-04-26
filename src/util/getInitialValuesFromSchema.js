@@ -8,21 +8,22 @@ const getInitialValuesFromSchema = (schema) => {
   return Object.entries(schema).reduce((acc, [key, value]) => {
     if (key === TYPE_KEY) {
       if (value === GROUP_TYPE) {
+        let childInitialValues = {};
+
         if (schema?.children?.length) {
-          let childInitialValues = {};
           schema.children.forEach((child) => {
             childInitialValues = {
               ...childInitialValues,
               ...getInitialValuesFromSchema(child),
             };
           });
-
-          return {
-            ...acc,
-            ...childInitialValues,
-            [`${schema.id}_expression`]: schema.condition ?? 'all',
-          };
         }
+
+        return {
+          ...acc,
+          ...childInitialValues,
+          [`${schema.id}_expression`]: schema.condition ?? 'all',
+        };
       }
 
       if (value === RULE_TYPE) {

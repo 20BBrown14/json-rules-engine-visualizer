@@ -6,7 +6,7 @@ import { SQFormTextField, SQFormDropdown } from '@selectquotelabs/sqform';
 import OPERATOR_SQFORMDROPDOWN_OPTIONS from '../constants/operatorConstants';
 
 const itemGridStyles = makeStyles({
-  itemGrid: {
+  containerGrid: {
     background: 'white',
     width: '100%',
     border: '1px solid #b3b3b3',
@@ -21,7 +21,7 @@ function RuleItem({
   const itemClasses = itemGridStyles();
 
   return (
-    <Grid container spacing={2} className={itemClasses.itemGrid}>
+    <Grid container spacing={2} className={itemClasses.containerGrid}>
       <SQFormTextField
         size={4}
         name={`${ruleName}_factName`}

@@ -8,7 +8,7 @@ exports[`RuleItem renders properly 1`] = `
     class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
   >
     <div
-      class="MuiGrid-root makeStyles-itemGrid-1 MuiGrid-container MuiGrid-spacing-xs-2"
+      class="MuiGrid-root makeStyles-containerGrid-1 MuiGrid-container MuiGrid-spacing-xs-2"
     >
       <div
         class="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-4"
