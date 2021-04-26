@@ -63,6 +63,7 @@ exports[`RuleGroup renders properly 1`] = `
       >
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-groupButton-3 MuiButton-containedSizeSmall MuiButton-sizeSmall"
+          id="someName_addGroupButton"
           tabindex="0"
           type="button"
         >

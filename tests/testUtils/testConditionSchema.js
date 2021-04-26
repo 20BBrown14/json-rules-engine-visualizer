@@ -40,6 +40,49 @@ export const testConditionSchema = {
   ],
 };
 
+// eslint-disable-next-line camelcase
+export const testConditionSchema_cGroupGroupAddition = {
+  type: 'group',
+  id: 'a',
+  condition: 'any',
+  children: [
+    {
+      type: 'rule',
+      id: 'b',
+      factName: 'firstFact',
+      operator: 'equal',
+      value: 'firstValue',
+    },
+    {
+      type: 'group',
+      id: 'c',
+      condition: undefined,
+      children: [
+        {
+          type: 'rule',
+          id: 'd',
+          factName: undefined,
+          operator: undefined,
+          value: undefined,
+        },
+        {
+          type: 'rule',
+          id: 'e',
+          factName: '',
+          operator: '',
+          value: '',
+        },
+        {
+          type: 'group',
+          id: 'z',
+          condition: undefined,
+          children: [],
+        },
+      ],
+    },
+  ],
+};
+
 export const expectedInitialValues = {
   a_expression: 'any',
   b_factName: 'firstFact',
@@ -56,9 +99,9 @@ export const expectedInitialValues = {
 
 export const expectedElements = renderToString(
   <SQFormWrapper initialValues={expectedInitialValues}>
-    <RuleGroup ruleGroupName="a" key="a_ruleGroup">
+    <RuleGroup ruleGroupName="a" key="a_ruleGroup" addGroupClickHandler={() => {}}>
       <RuleItem ruleName="b" key="b_ruleItem" />
-      <RuleGroup ruleGroupName="c" key="c_ruleGroup">
+      <RuleGroup ruleGroupName="c" key="c_ruleGroup" addGroupClickHandler={() => {}}>
         <RuleItem ruleName="d" key="d_ruleItem" />
         <RuleItem ruleName="e" key="e_ruleItem" />
       </RuleGroup>

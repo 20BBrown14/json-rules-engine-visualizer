@@ -24,6 +24,7 @@ module.exports = {
     'max-len': [2, { code: 120 }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/require-default-props': [0],
+    'no-continue': 0,
   },
   globals: {
     render: 'readonly',

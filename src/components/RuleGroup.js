@@ -11,6 +11,7 @@ const groupGridStyles = makeStyles({
     paddingBottom: '20px',
     border: '1px solid #b3b3b3',
     width: '100%',
+    marginBottom: '25px',
   },
   nestedGroupGrid: {
     width: '100%',
@@ -23,6 +24,8 @@ const groupGridStyles = makeStyles({
 
 function RuleGroup({
   ruleGroupName,
+  addGroupClickHandler,
+  isTopGroup = false,
   children,
 }) {
   const groupClasses = groupGridStyles();
@@ -30,6 +33,7 @@ function RuleGroup({
   return (
     <Grid container spacing={2} justify="flex-start" className={groupClasses.groupGrid}>
       <SQFormDropdown
+        id={`${ruleGroupName}_dropdown`}
         name={`${ruleGroupName}_expression`}
         label="Boolean Expression"
         size={3}
@@ -38,9 +42,11 @@ function RuleGroup({
       </SQFormDropdown>
       <Grid item sm={6}>
         <Button
+          id={`${ruleGroupName}_addGroupButton`}
           className={groupClasses.groupButton}
           variant="contained"
           size="small"
+          onClick={() => { addGroupClickHandler(ruleGroupName); }}
         >
           Add Group
         </Button>
@@ -51,6 +57,7 @@ function RuleGroup({
         >
           Add Rule
         </Button>
+        {!isTopGroup && (
         <Button
           className={groupClasses.groupButton}
           variant="contained"
@@ -58,6 +65,7 @@ function RuleGroup({
         >
           Remove
         </Button>
+        )}
       </Grid>
       <Grid item sm={3} />
       <Grid item sm={1} />
@@ -73,6 +81,10 @@ function RuleGroup({
 RuleGroup.propTypes = {
   /** Name of the rule group */
   ruleGroupName: PropTypes.string.isRequired,
+  /** Add Group button click handler */
+  addGroupClickHandler: PropTypes.func.isRequired,
+  /** Whether this group is the top group */
+  isTopGroup: PropTypes.bool,
   /** The rules or group that are a part of this group */
   children: PropTypes.node,
 };

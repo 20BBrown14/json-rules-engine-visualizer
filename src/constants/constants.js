@@ -39,5 +39,19 @@ export const DEFAULT_CONDITION_SCHEMA = {
         },
       ],
     },
+    {
+      type: 'group',
+      id: uuidv4(),
+      condition: 'all',
+      children: [
+        {
+          type: 'rule',
+          id: uuidv4(),
+          factName: '',
+          operator: '',
+          value: '',
+        },
+      ],
+    },
   ],
 };
