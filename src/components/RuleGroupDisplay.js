@@ -4,12 +4,13 @@ import { Grid } from '@material-ui/core';
 import { v4 as uuidv4 } from 'uuid';
 import getRuleElementsFromSchema from '../util/getRuleElementsFromSchema';
 import conditionSchemaPropType from '../util/proptypes';
+import { GROUP_TYPE, RULE_TYPE } from '../constants/constants';
 
 function RuleGroupDisplay({
   livingConditionSchema,
   setLivingConditionSchema,
 }) {
-  const addGroupClickHandler = React.useCallback((ruleGroupName) => {
+  const addChildToGroup = React.useCallback((ruleGroupName, childTypeToAdd) => {
     const buildNewSchema = (existingSchema) => {
       let newConditionSchema = {};
       if (existingSchema.id === ruleGroupName) {
@@ -18,12 +19,19 @@ function RuleGroupDisplay({
           ...existingSchema,
           children: [
             ...existingSchema.children,
-            {
-              type: 'group',
+            (childTypeToAdd === GROUP_TYPE && {
+              type: GROUP_TYPE,
               id: uuidv4(),
               condition: 'all',
               children: [],
-            },
+            }),
+            (childTypeToAdd === RULE_TYPE && {
+              type: RULE_TYPE,
+              id: uuidv4(),
+              factName: '',
+              operator: 'equal',
+              value: '',
+            }),
           ],
         };
         return newConditionSchema;
@@ -53,8 +61,8 @@ function RuleGroupDisplay({
 
   const ruleElements = React.useMemo(
     () => (
-      getRuleElementsFromSchema(livingConditionSchema, addGroupClickHandler, true)
-    ), [getRuleElementsFromSchema, livingConditionSchema, addGroupClickHandler],
+      getRuleElementsFromSchema(livingConditionSchema, addChildToGroup, true)
+    ), [getRuleElementsFromSchema, livingConditionSchema, addChildToGroup],
   );
 
   return (
