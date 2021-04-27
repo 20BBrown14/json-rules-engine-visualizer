@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from '@material-ui/core';
+import { Grid, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { SQFormTextField, SQFormDropdown, useSQFormContext } from '@selectquotelabs/sqform';
 import OPERATOR_SQFORMDROPDOWN_OPTIONS from '../constants/operatorConstants';
 
@@ -13,10 +14,14 @@ const itemGridStyles = makeStyles({
     marginBottom: '25px',
     height: '80px',
   },
+  deleteIcon: {
+    padding: 0,
+  },
 });
 
 function RuleItem({
   ruleName,
+  removeRuleItem,
 }) {
   const itemClasses = itemGridStyles();
 
@@ -36,6 +41,11 @@ function RuleItem({
 
   return (
     <Grid container spacing={2} className={itemClasses.containerGrid}>
+      <Grid item sm={1}>
+        <IconButton className={itemClasses.deleteIcon} onClick={() => { removeRuleItem(ruleName); }}>
+          <DeleteIcon />
+        </IconButton>
+      </Grid>
       <SQFormTextField
         size={4}
         name={`${ruleName}_factName`}
@@ -43,7 +53,7 @@ function RuleItem({
         placeholder="Fact Name"
       />
       <SQFormDropdown
-        size={4}
+        size={3}
         name={`${ruleName}_operator`}
         label="Operator"
       >
@@ -62,6 +72,8 @@ function RuleItem({
 RuleItem.propTypes = {
   /** Name of this particular rule */
   ruleName: PropTypes.string.isRequired,
+  /** Function to delete rule */
+  removeRuleItem: PropTypes.func.isRequired,
 };
 
 export default RuleItem;
