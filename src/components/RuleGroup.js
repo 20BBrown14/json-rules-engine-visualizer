@@ -25,11 +25,11 @@ const groupGridStyles = makeStyles({
 function RuleGroup({
   ruleGroupName,
   addChildToGroup,
+  removeRuleGroup,
   isTopGroup = false,
   children,
 }) {
   const groupClasses = groupGridStyles();
-
   const { initialValues } = useSQFormContext();
 
   // Check if the initial values for this group exist yet
@@ -41,6 +41,8 @@ function RuleGroup({
   if (!initialValue) {
     return null;
   }
+
+  const isRemoveDisabled = children && children.length;
 
   return (
     <Grid container spacing={2} justify="flex-start" className={groupClasses.groupGrid}>
@@ -71,13 +73,15 @@ function RuleGroup({
           Add Rule
         </Button>
         {!isTopGroup && (
-        <Button
-          className={groupClasses.groupButton}
-          variant="contained"
-          size="small"
-        >
-          Remove
-        </Button>
+          <Button
+            className={groupClasses.groupButton}
+            variant="contained"
+            size="small"
+            disabled={!!isRemoveDisabled}
+            onClick={() => { removeRuleGroup(ruleGroupName); }}
+          >
+            Remove
+          </Button>
         )}
       </Grid>
       <Grid item sm={3} />
@@ -96,6 +100,8 @@ RuleGroup.propTypes = {
   ruleGroupName: PropTypes.string.isRequired,
   /** Add child to group function */
   addChildToGroup: PropTypes.func.isRequired,
+  /** Function to remove this group entirely */
+  removeRuleGroup: PropTypes.func.isRequired,
   /** Whether this group is the top group */
   isTopGroup: PropTypes.bool,
   /** The rules or group that are a part of this group */

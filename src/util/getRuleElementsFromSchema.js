@@ -3,7 +3,7 @@ import RuleGroup from '../components/RuleGroup';
 import RuleItem from '../components/RuleItem';
 import { TYPE_KEY, GROUP_TYPE, RULE_TYPE } from '../constants/constants';
 
-const getRuleElementsFromSchema = (schema, addChildToGroup, isFirstIteration) => {
+const getRuleElementsFromSchema = (schema, addChildToGroup, removeChildFromGroup, isFirstIteration) => {
   if (!schema) {
     return [];
   }
@@ -16,7 +16,7 @@ const getRuleElementsFromSchema = (schema, addChildToGroup, isFirstIteration) =>
           schema.children.forEach((child) => {
             childElements = [
               ...childElements,
-              ...getRuleElementsFromSchema(child, addChildToGroup, false),
+              ...getRuleElementsFromSchema(child, addChildToGroup, removeChildFromGroup, false),
             ];
           });
         }
@@ -27,6 +27,7 @@ const getRuleElementsFromSchema = (schema, addChildToGroup, isFirstIteration) =>
             key={`${schema.id}_ruleGroup`}
             ruleGroupName={schema.id}
             addChildToGroup={addChildToGroup}
+            removeRuleGroup={removeChildFromGroup}
             isTopGroup={isFirstIteration}
           >
             {childElements}
@@ -37,10 +38,10 @@ const getRuleElementsFromSchema = (schema, addChildToGroup, isFirstIteration) =>
       if (value === RULE_TYPE) {
         return [
           ...acc,
-
           <RuleItem
             key={`${schema.id}_ruleItem`}
             ruleName={schema.id}
+            removeRuleItem={removeChildFromGroup}
           />,
         ];
       }
