@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { SQFormDropdown } from '@selectquotelabs/sqform';
-import { EXPRESSION_SQFORMDROPDOWN_OPTIONS } from '../constants/constants';
+import { SQFormDropdown, useSQFormContext } from '@selectquotelabs/sqform';
+import { EXPRESSION_SQFORMDROPDOWN_OPTIONS, GROUP_TYPE, RULE_TYPE } from '../constants/constants';
 
 const groupGridStyles = makeStyles({
   groupGrid: {
@@ -24,11 +24,23 @@ const groupGridStyles = makeStyles({
 
 function RuleGroup({
   ruleGroupName,
-  addGroupClickHandler,
+  addChildToGroup,
   isTopGroup = false,
   children,
 }) {
   const groupClasses = groupGridStyles();
+
+  const { initialValues } = useSQFormContext();
+
+  // Check if the initial values for this group exist yet
+  const initialValue = Object.keys(initialValues).find((key) => (
+    `${ruleGroupName}_expression` === key
+  ));
+
+  // If initial value doesn't exist don't render anything
+  if (!initialValue) {
+    return null;
+  }
 
   return (
     <Grid container spacing={2} justify="flex-start" className={groupClasses.groupGrid}>
@@ -46,7 +58,7 @@ function RuleGroup({
           className={groupClasses.groupButton}
           variant="contained"
           size="small"
-          onClick={() => { addGroupClickHandler(ruleGroupName); }}
+          onClick={() => { addChildToGroup(ruleGroupName, GROUP_TYPE); }}
         >
           Add Group
         </Button>
@@ -54,6 +66,7 @@ function RuleGroup({
           className={groupClasses.groupButton}
           variant="contained"
           size="small"
+          onClick={() => { addChildToGroup(ruleGroupName, RULE_TYPE); }}
         >
           Add Rule
         </Button>
@@ -81,8 +94,8 @@ function RuleGroup({
 RuleGroup.propTypes = {
   /** Name of the rule group */
   ruleGroupName: PropTypes.string.isRequired,
-  /** Add Group button click handler */
-  addGroupClickHandler: PropTypes.func.isRequired,
+  /** Add child to group function */
+  addChildToGroup: PropTypes.func.isRequired,
   /** Whether this group is the top group */
   isTopGroup: PropTypes.bool,
   /** The rules or group that are a part of this group */

@@ -14,7 +14,7 @@ function JSONRulesEngineVisualiser({
     getInitialValuesFromSchema(livingConditionSchema)
   ), [getInitialValuesFromSchema, livingConditionSchema]);
 
-  const elements = (
+  return (
     <SQForm
       id="json-rules-engine-visualiser-SQForm"
       initialValues={initialValues}
@@ -23,7 +23,6 @@ function JSONRulesEngineVisualiser({
       key={`SQForm_${initialValues.length}`}
     >
       <RuleGroupDisplay
-        initialValues={initialValues}
         livingConditionSchema={livingConditionSchema}
         setLivingConditionSchema={setLivingConditionSchema}
       />
@@ -34,8 +33,6 @@ function JSONRulesEngineVisualiser({
       </Grid>
     </SQForm>
   );
-
-  return elements;
 }
 
 JSONRulesEngineVisualiser.propTypes = {
