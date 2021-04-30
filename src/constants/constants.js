@@ -55,3 +55,22 @@ export const DEFAULT_CONDITION_SCHEMA = {
     },
   ],
 };
+
+export const STRING_OPERATORS = [
+  'equal',
+  'notEqual',
+];
+
+export const NUMERIC_OPERATORS = [
+  'lessThan',
+  'lessThanInclusive',
+  'greaterThan',
+  'greaterThanInclusive',
+];
+
+export const ARRAY_OPERATORS = [
+  'in',
+  'notIn',
+  'contains',
+  'doesNotContain',
+];

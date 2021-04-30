@@ -30,7 +30,7 @@ const conditionSchemaPropType = (
       groupPropType,
       rulePropType,
     ])),
-  }).isRequired
+  })
 );
 
 export default conditionSchemaPropType;

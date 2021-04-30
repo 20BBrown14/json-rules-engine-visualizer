@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
 import getInitialValuesFromSchema from '../util/getInitialValuesFromSchema';
@@ -11,6 +12,7 @@ import RuleGroupDisplay from './RuleGroupDisplay';
 
 function JSONRulesEngineVisualiser({
   conditionSchema,
+  onSubmit,
 }) {
   const [livingConditionSchema, setLivingConditionSchema] = React.useState(() => (
     engineSchemaToVisualisationSchema(conditionSchema) || DEFAULT_CONDITION_SCHEMA
@@ -46,9 +48,7 @@ function JSONRulesEngineVisualiser({
   const handleSubmit = React.useCallback((formValues) => {
     const JSONRulesEngineCondition = buildJSONRulesEngineCondition(livingConditionSchema, formValues);
 
-    // TODO: Get this to the consumer
-    // eslint-disable-next-line no-console
-    console.log('JSONRulesEngineCondition', JSONRulesEngineCondition);
+    onSubmit(JSONRulesEngineCondition);
   });
 
   return (
@@ -75,6 +75,7 @@ function JSONRulesEngineVisualiser({
 
 JSONRulesEngineVisualiser.propTypes = {
   conditionSchema: conditionSchemaPropType,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default JSONRulesEngineVisualiser;
