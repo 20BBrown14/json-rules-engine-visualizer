@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
 import getInitialValuesFromSchema from '../util/getInitialValuesFromSchema';
 import getValidationSchemaFromSchema from '../util/getValidationSchemaFromSchema';
-import conditionSchemaPropType from '../util/proptypes';
+import { rulesEngineSchemaPropType } from '../util/proptypes';
 import buildJSONRulesEngineCondition from '../util/buildJSONRulesEngineCondition';
 import engineSchemaToVisualisationSchema from '../util/engineSchemaToVisualisationSchema';
 import { DEFAULT_CONDITION_SCHEMA } from '../constants/constants';
@@ -13,6 +13,7 @@ import RuleGroupDisplay from './RuleGroupDisplay';
 function JSONRulesEngineVisualiser({
   conditionSchema,
   onSubmit,
+  factNameDropdownOptions,
 }) {
   const [livingConditionSchema, setLivingConditionSchema] = React.useState(() => (
     engineSchemaToVisualisationSchema(conditionSchema) || DEFAULT_CONDITION_SCHEMA
@@ -63,6 +64,7 @@ function JSONRulesEngineVisualiser({
       <RuleGroupDisplay
         livingConditionSchema={livingConditionSchema}
         setLivingConditionSchema={setLivingConditionSchema}
+        factNameDropdownOptions={factNameDropdownOptions}
       />
       <Grid item sm={12}>
         <Grid container justify="flex-end">
@@ -74,8 +76,15 @@ function JSONRulesEngineVisualiser({
 }
 
 JSONRulesEngineVisualiser.propTypes = {
-  conditionSchema: conditionSchemaPropType,
+  /** Condition schema, json-rules-engine format */
+  conditionSchema: rulesEngineSchemaPropType,
+  /** Function to be called when schema is submitted. Should take a JSON object. */
   onSubmit: PropTypes.func.isRequired,
+  /** Options to be used for the fact dropdown. */
+  factNameDropdownOptions: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.oneOf([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+  })),
 };
 
 export default JSONRulesEngineVisualiser;

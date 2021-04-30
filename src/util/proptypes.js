@@ -1,6 +1,25 @@
 import PropTypes from 'prop-types';
 
-const rulePropType = (
+const rulesEngineRulePropType = (
+  PropTypes.exact({
+    fact: PropTypes.string.isRequired,
+    operator: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]).isRequired,
+  }).isRequired
+);
+
+const rulesEngineGroupPropType = (
+  PropTypes.oneOfType([
+    PropTypes.shape({
+      any: PropTypes.arrayOf(PropTypes.oneOfType([rulesEngineRulePropType, PropTypes.object])).isRequired,
+    }),
+    PropTypes.shape({
+      all: PropTypes.arrayOf(PropTypes.oneOfType([rulesEngineRulePropType, PropTypes.object])).isRequired,
+    }),
+  ])
+);
+
+const visualiserSchemaRulePropType = (
   PropTypes.exact({
     type: PropTypes.oneOf(['rule']).isRequired,
     id: PropTypes.string.isRequired,
@@ -10,27 +29,27 @@ const rulePropType = (
   })
 );
 
-const groupPropType = (
+const visualiserSchemaGroupPropType = (
   PropTypes.shape({
     type: PropTypes.oneOf(['group']).isRequired,
     id: PropTypes.string.isRequired,
     condition: PropTypes.oneOf(['any', 'all']),
-    // Children should actually be another groupPropType or rulePropType
+    // Children should actually be another visualiserSchemaGroupPropType or visualiserSchemaRulePropType
     // Doing it this way prevents console warnings
     children: PropTypes.arrayOf(PropTypes.object),
   })
 );
 
-const conditionSchemaPropType = (
+export const visualiserSchemaPropType = (
   PropTypes.shape({
     type: PropTypes.oneOf(['group']).isRequired,
     id: PropTypes.string.isRequired,
     condition: PropTypes.oneOf(['any', 'all']),
     children: PropTypes.arrayOf(PropTypes.oneOfType([
-      groupPropType,
-      rulePropType,
+      visualiserSchemaGroupPropType,
+      visualiserSchemaRulePropType,
     ])),
-  })
+  }).isRequired
 );
 
-export default conditionSchemaPropType;
+export { rulesEngineGroupPropType as rulesEngineSchemaPropType };
