@@ -17,6 +17,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^4.0.0-alpha.11",
     "@selectquotelabs/sqform": "^4.0.0",
+    "json-rules-engine": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-app-polyfill": "^2.0.0",

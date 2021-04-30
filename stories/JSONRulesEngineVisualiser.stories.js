@@ -29,8 +29,13 @@ const TEST_ENGINE_SCHEMA = {
   ],
 };
 
+const handleSubmit = (rulesEngineSchema) => {
+  // eslint-disable-next-line no-alert
+  window.alert(JSON.stringify(rulesEngineSchema));
+};
+
 export const visualiser = () => (
   <Card raised style={{ padding: 16, marginTop: 150 }}>
-    <JSONRulesEngineVisualiser conditionSchema={TEST_ENGINE_SCHEMA} />
+    <JSONRulesEngineVisualiser conditionSchema={TEST_ENGINE_SCHEMA} onSubmit={handleSubmit} />
   </Card>
 );

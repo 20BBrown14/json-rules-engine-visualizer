@@ -11,7 +11,7 @@ const OPERATORS = [
   'in',
   'notIn',
   'contains',
-  'doesNotContainer',
+  'doesNotContain',
 ];
 
 const OPERATOR_SQFORMDROPDOWN_OPTIONS = OPERATORS.map((operator) => (
