@@ -2,6 +2,8 @@ import React from 'react';
 import * as Yup from 'yup';
 import { Engine, Rule } from 'json-rules-engine';
 import { Card, Grid, Typography } from '@material-ui/core';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import {
   SQForm, SQFormButton, SQFormDropdown, SQFormTextField,
 } from '@selectquotelabs/sqform';
@@ -9,6 +11,7 @@ import JSONRulesEngineVisualiser from '../src';
 
 export default {
   title: 'Rules Engine Demo',
+  decorators: [withKnobs],
 };
 
 const CAR_MAKES = [
@@ -59,6 +62,14 @@ const TEST_CONDITION_SCHEMA = {
   },
   ],
 };
+
+const factNameDropdownOptions = [
+  { label: 'Year', value: 'year' },
+  { label: 'Make', value: 'make' },
+  { label: 'Color', value: 'color' },
+  { label: 'State', value: 'state' },
+  { label: 'Mileage', value: 'mileage' },
+];
 
 const engine = new Engine();
 
@@ -124,7 +135,11 @@ export const rulesEngineDemo = () => {
     <Grid container spacing={2}>
       <Grid item sm={12}>
         <Card raised style={{ padding: 16, marginTop: 300 }}>
-          <JSONRulesEngineVisualiser conditionSchema={TEST_CONDITION_SCHEMA} onSubmit={handleRuleSubmit} />
+          <JSONRulesEngineVisualiser
+            conditionSchema={TEST_CONDITION_SCHEMA}
+            onSubmit={handleRuleSubmit}
+            factNameDropdownOptions={boolean('Use dropdown for fact name', false) ? factNameDropdownOptions : undefined}
+          />
         </Card>
       </Grid>
       <Grid item sm={12}>

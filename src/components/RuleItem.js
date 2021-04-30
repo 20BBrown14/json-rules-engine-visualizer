@@ -22,6 +22,7 @@ const itemGridStyles = makeStyles({
 function RuleItem({
   ruleName,
   removeRuleItem,
+  factNameDropdownOptions,
 }) {
   const itemClasses = itemGridStyles();
 
@@ -39,6 +40,29 @@ function RuleItem({
     return null;
   }
 
+  const factField = React.useMemo(() => {
+    if (factNameDropdownOptions) {
+      return (
+        <SQFormDropdown
+          size={4}
+          name={`${ruleName}_factName`}
+          label="Fact Name"
+        >
+          {factNameDropdownOptions}
+        </SQFormDropdown>
+      );
+    }
+
+    return (
+      <SQFormTextField
+        size={4}
+        name={`${ruleName}_factName`}
+        label="Fact Name"
+        placeholder="Fact Name"
+      />
+    );
+  }, [factNameDropdownOptions]);
+
   return (
     <Grid container spacing={2} className={itemClasses.containerGrid}>
       <Grid item sm={1}>
@@ -46,12 +70,7 @@ function RuleItem({
           <DeleteIcon />
         </IconButton>
       </Grid>
-      <SQFormTextField
-        size={4}
-        name={`${ruleName}_factName`}
-        label="Fact Name"
-        placeholder="Fact Name"
-      />
+      {factField}
       <SQFormDropdown
         size={3}
         name={`${ruleName}_operator`}
@@ -74,6 +93,11 @@ RuleItem.propTypes = {
   ruleName: PropTypes.string.isRequired,
   /** Function to delete rule */
   removeRuleItem: PropTypes.func.isRequired,
+  /** Options to be used for the fact dropdown. */
+  factNameDropdownOptions: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.oneOf([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+  })),
 };
 
 export default RuleItem;
