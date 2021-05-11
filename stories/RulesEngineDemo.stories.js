@@ -71,6 +71,31 @@ const factNameDropdownOptions = [
   { label: 'Mileage', value: 'mileage' },
 ];
 
+const generalFactNameDropdownOptions = [
+  ...CAR_COLORS,
+  ...CAR_MAKES,
+  ...STATES,
+  { label: '2010', value: '2010' },
+  { label: '2016', value: '2016' },
+  { label: '2018', value: '2018' },
+  { label: '2020', value: '2020' },
+  { label: '1', value: '1' },
+  { label: '100001', value: '100001' },
+  { label: '200001', value: '200001' },
+];
+
+const specificFactNameDropdownOptions = {
+  year: [
+    { label: '2010', value: '2010' },
+    { label: '2016', value: '2016' },
+    { label: '2018', value: '2018' },
+    { label: '2020', value: '2020' },
+  ],
+  make: CAR_MAKES,
+  color: CAR_COLORS,
+  state: STATES,
+};
+
 const engine = new Engine();
 
 export const rulesEngineDemo = () => {
@@ -139,6 +164,14 @@ export const rulesEngineDemo = () => {
             conditionSchema={TEST_CONDITION_SCHEMA}
             onSubmit={handleRuleSubmit}
             factNameDropdownOptions={boolean('Use dropdown for fact name', false) ? factNameDropdownOptions : undefined}
+            valueDropdownOptions={
+              /* eslint-disable-next-line no-nested-ternary */
+              boolean('Use dropdown options for value', false)
+                ? (boolean('Use specific dropdown options for value', false)
+                  ? specificFactNameDropdownOptions
+                  : generalFactNameDropdownOptions)
+                : undefined
+            }
           />
         </Card>
       </Grid>

@@ -40,6 +40,33 @@ const visualiserSchemaGroupPropType = (
   })
 );
 
+/** Options to be used for the value dropdown
+ * The object should have a key for each value in the factNameDropdownOptions
+ * prop that indicate the possible values for that fact to have seperate values
+ * for each fact. factNameDropdownOptions is required for this to operate properly.
+ *
+ * Otherwise, an array of options can be passed that'll be used for all facts.
+ *
+ */
+export const valueDropdownOptionsPropType = (
+  PropTypes.oneOfType([
+    PropTypes.objectOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+        }),
+      ),
+    ),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+      }),
+    ),
+  ])
+);
+
 export const visualiserSchemaPropType = (
   PropTypes.shape({
     type: PropTypes.oneOf(['group']).isRequired,

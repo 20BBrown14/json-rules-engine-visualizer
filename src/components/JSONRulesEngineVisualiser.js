@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
 import getInitialValuesFromSchema from '../util/getInitialValuesFromSchema';
 import getValidationSchemaFromSchema from '../util/getValidationSchemaFromSchema';
-import { rulesEngineSchemaPropType } from '../util/proptypes';
+import { rulesEngineSchemaPropType, valueDropdownOptionsPropType } from '../util/proptypes';
 import buildJSONRulesEngineCondition from '../util/buildJSONRulesEngineCondition';
 import engineSchemaToVisualisationSchema from '../util/engineSchemaToVisualisationSchema';
 import { DEFAULT_CONDITION_SCHEMA } from '../constants/constants';
@@ -14,6 +14,7 @@ function JSONRulesEngineVisualiser({
   conditionSchema,
   onSubmit,
   factNameDropdownOptions,
+  valueDropdownOptions,
 }) {
   const [livingConditionSchema, setLivingConditionSchema] = React.useState(() => (
     engineSchemaToVisualisationSchema(conditionSchema) || DEFAULT_CONDITION_SCHEMA
@@ -65,6 +66,7 @@ function JSONRulesEngineVisualiser({
         livingConditionSchema={livingConditionSchema}
         setLivingConditionSchema={setLivingConditionSchema}
         factNameDropdownOptions={factNameDropdownOptions}
+        valueDropdownOptions={valueDropdownOptions}
       />
       <Grid item sm={12}>
         <Grid container justify="flex-end">
@@ -83,8 +85,10 @@ JSONRulesEngineVisualiser.propTypes = {
   /** Options to be used for the fact dropdown. */
   factNameDropdownOptions: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
-    value: PropTypes.oneOf([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
   })),
+  /** Options to be used for the value dropdown */
+  valueDropdownOptions: valueDropdownOptionsPropType,
 };
 
 export default JSONRulesEngineVisualiser;

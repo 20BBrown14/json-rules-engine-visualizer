@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import getRuleElementsFromSchema from '../util/getRuleElementsFromSchema';
-import { visualiserSchemaPropType } from '../util/proptypes';
+import { visualiserSchemaPropType, valueDropdownOptionsPropType } from '../util/proptypes';
 import buildNewSchemaWithAddition from '../util/buildNewSchemaWithAddition';
 import buildNewSchemaWithRemoval from '../util/buildNewSchemaWithRemoval';
 
@@ -10,6 +10,7 @@ function RuleGroupDisplay({
   livingConditionSchema,
   setLivingConditionSchema,
   factNameDropdownOptions,
+  valueDropdownOptions,
 }) {
   const addChildToGroup = React.useCallback((ruleGroupName, childTypeToAdd) => {
     setLivingConditionSchema(buildNewSchemaWithAddition(livingConditionSchema, ruleGroupName, childTypeToAdd));
@@ -26,6 +27,7 @@ function RuleGroupDisplay({
         addChildToGroup,
         removeChildFromGroup,
         factNameDropdownOptions,
+        valueDropdownOptions,
         true,
       )
     ), [
@@ -34,6 +36,7 @@ function RuleGroupDisplay({
       addChildToGroup,
       removeChildFromGroup,
       factNameDropdownOptions,
+      valueDropdownOptions,
     ],
   );
 
@@ -50,8 +53,10 @@ RuleGroupDisplay.propTypes = {
   /** Options to be used for the fact dropdown. */
   factNameDropdownOptions: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
-    value: PropTypes.oneOf([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
   })),
+  /** Options to be used for the value dropdown */
+  valueDropdownOptions: valueDropdownOptionsPropType,
 };
 
 export default RuleGroupDisplay;
