@@ -8,6 +8,7 @@ const getRuleElementsFromSchema = (
   addChildToGroup,
   removeChildFromGroup,
   factNameDropdownOptions,
+  valueDropdownOptions,
   isFirstIteration,
 ) => {
   if (!schema) {
@@ -27,6 +28,7 @@ const getRuleElementsFromSchema = (
                 addChildToGroup,
                 removeChildFromGroup,
                 factNameDropdownOptions,
+                valueDropdownOptions,
                 false,
               ),
             ];
@@ -55,6 +57,7 @@ const getRuleElementsFromSchema = (
             ruleName={schema.id}
             removeRuleItem={removeChildFromGroup}
             factNameDropdownOptions={factNameDropdownOptions}
+            valueDropdownOptions={valueDropdownOptions}
           />,
         ];
       }
