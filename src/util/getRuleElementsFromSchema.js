@@ -9,6 +9,7 @@ const getRuleElementsFromSchema = (
   removeChildFromGroup,
   factNameDropdownOptions,
   valueDropdownOptions,
+  updateAllFactNames,
   isFirstIteration,
 ) => {
   if (!schema) {
@@ -29,6 +30,7 @@ const getRuleElementsFromSchema = (
                 removeChildFromGroup,
                 factNameDropdownOptions,
                 valueDropdownOptions,
+                updateAllFactNames,
                 false,
               ),
             ];
@@ -58,6 +60,7 @@ const getRuleElementsFromSchema = (
             removeRuleItem={removeChildFromGroup}
             factNameDropdownOptions={factNameDropdownOptions}
             valueDropdownOptions={valueDropdownOptions}
+            updateAllFactNames={updateAllFactNames}
           />,
         ];
       }

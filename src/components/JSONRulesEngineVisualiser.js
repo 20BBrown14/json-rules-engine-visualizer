@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
 import getInitialValuesFromSchema from '../util/getInitialValuesFromSchema';
-import getValidationSchemaFromSchema from '../util/getValidationSchemaFromSchema';
+import { getValidationSchemaFromSchema } from '../util/getValidationSchemaFromSchema';
 import { rulesEngineSchemaPropType, valueDropdownOptionsPropType } from '../util/proptypes';
 import buildJSONRulesEngineCondition from '../util/buildJSONRulesEngineCondition';
 import engineSchemaToVisualisationSchema from '../util/engineSchemaToVisualisationSchema';
@@ -20,13 +20,16 @@ function JSONRulesEngineVisualiser({
     engineSchemaToVisualisationSchema(conditionSchema) || DEFAULT_CONDITION_SCHEMA
   ));
 
+  const [allFactNames, setAllFactNames] = React.useState({});
+  console.log('allFactNames', allFactNames)
+
   const initialValues = React.useMemo(() => (
     getInitialValuesFromSchema(livingConditionSchema)
   ), [getInitialValuesFromSchema, livingConditionSchema]);
 
   const validationSchema = React.useMemo(() => (
-    getValidationSchemaFromSchema(livingConditionSchema)
-  ), [getValidationSchemaFromSchema, livingConditionSchema]);
+    getValidationSchemaFromSchema(livingConditionSchema, allFactNames)
+  ), [getValidationSchemaFromSchema, livingConditionSchema, allFactNames]);
 
   const isSubmitDisabled = React.useMemo(() => {
     // All groups must have at least one child
@@ -53,6 +56,16 @@ function JSONRulesEngineVisualiser({
     onSubmit(JSONRulesEngineCondition);
   });
 
+  const updateAllFactNames = React.useCallback((factNameKey, factNameValue) => {
+    console.log('updateAllFactNames', factNameKey, factNameValue)
+    setAllFactNames((previousFactNames) => {
+      return {
+        ...previousFactNames,
+        [factNameKey]: factNameValue,
+      }
+    })
+  }, []);
+
   return (
     <SQForm
       id="json-rules-engine-visualiser-SQForm"
@@ -67,6 +80,7 @@ function JSONRulesEngineVisualiser({
         setLivingConditionSchema={setLivingConditionSchema}
         factNameDropdownOptions={factNameDropdownOptions}
         valueDropdownOptions={valueDropdownOptions}
+        updateAllFactNames={updateAllFactNames}
       />
       <Grid item sm={12}>
         <Grid container justify="flex-end">

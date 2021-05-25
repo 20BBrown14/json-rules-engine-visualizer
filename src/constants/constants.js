@@ -12,6 +12,7 @@ export const EXPRESSION_SQFORMDROPDOWN_OPTIONS = BOOLEAN_EXPRESSIONS.map((boolEx
 export const TYPE_KEY = 'type';
 export const GROUP_TYPE = 'group';
 export const RULE_TYPE = 'rule';
+export const FACT_NAME_KEY = 'factName';
 
 export const DEFAULT_CONDITION_SCHEMA = {
   type: 'group',

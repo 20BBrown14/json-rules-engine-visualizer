@@ -11,6 +11,7 @@ function RuleGroupDisplay({
   setLivingConditionSchema,
   factNameDropdownOptions,
   valueDropdownOptions,
+  updateAllFactNames,
 }) {
   const addChildToGroup = React.useCallback((ruleGroupName, childTypeToAdd) => {
     setLivingConditionSchema(buildNewSchemaWithAddition(livingConditionSchema, ruleGroupName, childTypeToAdd));
@@ -28,6 +29,7 @@ function RuleGroupDisplay({
         removeChildFromGroup,
         factNameDropdownOptions,
         valueDropdownOptions,
+        updateAllFactNames,
         true,
       )
     ), [
@@ -37,6 +39,7 @@ function RuleGroupDisplay({
       removeChildFromGroup,
       factNameDropdownOptions,
       valueDropdownOptions,
+      updateAllFactNames,
     ],
   );
 
@@ -57,6 +60,8 @@ RuleGroupDisplay.propTypes = {
   })),
   /** Options to be used for the value dropdown */
   valueDropdownOptions: valueDropdownOptionsPropType,
+  /** Function to update all fact names */
+  updateAllFactNames: PropTypes.func.isRequired,
 };
 
 export default RuleGroupDisplay;

@@ -25,16 +25,21 @@ function RuleItem({
   removeRuleItem,
   factNameDropdownOptions,
   valueDropdownOptions,
+  updateAllFactNames,
 }) {
   const itemClasses = itemGridStyles();
 
-  const { initialValues } = useSQFormContext();
+  const { initialValues, values } = useSQFormContext();
 
   const [selectedFactName, setSelectedFactName] = React.useState(initialValues[`${ruleName}_factName`]);
 
-  const handleFactNameDropdownChange = ({ target: { value: newFactName } }) => {
+  React.useEffect(() => {
+    updateAllFactNames(`${ruleName}_factName`, values[`${ruleName}_factName`]);
+  }, [updateAllFactNames, values, ruleName])
+
+  const handleFactNameDropdownChange = React.useCallback(({ target: { value: newFactName } }) => {
     setSelectedFactName(newFactName);
-  };
+  }, []);
 
   // Determine if SQForm has the values for these fields yet
   const initialValue = Object.keys(initialValues).find((key) => (
@@ -144,6 +149,8 @@ RuleItem.propTypes = {
   })),
   /** Options to be used for the value dropdown */
   valueDropdownOptions: valueDropdownOptionsPropType,
+  /** Function to update all fact names with new value */
+  updateAllFactNames: PropTypes.func.isRequired,
 };
 
 export default RuleItem;
