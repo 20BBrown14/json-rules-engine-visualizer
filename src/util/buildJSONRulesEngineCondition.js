@@ -1,4 +1,5 @@
-import { GROUP_TYPE, NUMERIC_OPERATORS, RULE_TYPE } from '../constants/constants';
+import { GROUP_TYPE, RULE_TYPE } from '../constants/constants';
+import { NUMERIC_OPERATORS } from '../constants/operatorConstants';
 
 const findValuesFromId = (id, type, formValues) => {
   if (type === GROUP_TYPE) {

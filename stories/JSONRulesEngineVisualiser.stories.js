@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import JSONRulesEngineVisualiser from '../src';
+import { JSONRulesEngineVisualiser } from '../src';
 
 export default {
   title: 'JSON Rules Engine Visualiser',

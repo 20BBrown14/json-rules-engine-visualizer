@@ -40,13 +40,49 @@ const visualiserSchemaGroupPropType = (
   })
 );
 
-/** Options to be used for the value dropdown
+/** Options to be used for the operator dropdown
  * The object should have a key for each value in the factNameDropdownOptions
- * prop that indicate the possible values for that fact to have seperate values
- * for each fact. factNameDropdownOptions is required for this to operate properly.
+ * prop that indicate the possible values for that fact. This allows for each fact to
+ * have different valid operator options.
+ * factNameDropdownOptions is required for this to operator properly
  *
  * Otherwise, an array of options can be passed that'll be used for all facts.
  *
+ * Not passing options will use all default operators
+ *
+ * An example can found in the RulesEngineDemo story
+ */
+
+export const operatorDropdownOptionsPropType = (
+  PropTypes.oneOfType([
+    PropTypes.objectOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          label: PropTypes.string.isRequired,
+          value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+        }),
+      ),
+    ),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
+      }),
+    ),
+  ])
+);
+
+/** Options to be used for the value dropdown
+ * The object should have a key for each value in the factNameDropdownOptions
+ * prop that indicate the possible values for that fact. This allow for each fact
+ * to have different valid value options.
+ * factNameDropdownOptions is required for this to operate properly.
+ *
+ * Otherwise, an array of options can be passed that'll be used for all facts.
+ *
+ * Not passing options will use the default free form text field.
+ *
+ * Examples can be found in the RulesEngineDemo story
  */
 export const valueDropdownOptionsPropType = (
   PropTypes.oneOfType([

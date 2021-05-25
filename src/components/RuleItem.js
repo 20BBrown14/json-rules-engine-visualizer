@@ -4,8 +4,9 @@ import { Grid, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { SQFormTextField, SQFormDropdown, useSQFormContext } from '@selectquotelabs/sqform';
-import { valueDropdownOptionsPropType } from '../util/proptypes';
-import OPERATOR_SQFORMDROPDOWN_OPTIONS from '../constants/operatorConstants';
+import { operatorDropdownOptionsPropType, valueDropdownOptionsPropType } from '../util/proptypes';
+import DEFAULT_OPERATORS from '../constants/operatorConstants';
+import stringArrayToDropdownOptions from '../util/stringArrayToDropdownOptions';
 
 const itemGridStyles = makeStyles({
   containerGrid: {
@@ -24,9 +25,11 @@ function RuleItem({
   ruleName,
   removeRuleItem,
   factNameDropdownOptions,
+  operatorDropdownOptions,
   valueDropdownOptions,
   updateAllFactNames,
 }) {
+  const DEFAULT_OPERATOR_OPTIONS = stringArrayToDropdownOptions(DEFAULT_OPERATORS);
   const itemClasses = itemGridStyles();
 
   const { initialValues, values } = useSQFormContext();
@@ -71,6 +74,25 @@ function RuleItem({
       />
     );
   }, [factNameDropdownOptions]);
+
+  const operatorOptions = React.useMemo(() => {
+    if (!operatorDropdownOptions) {
+      return DEFAULT_OPERATOR_OPTIONS;
+    }
+
+    if (Array.isArray(operatorDropdownOptions)) {
+      return operatorDropdownOptions;
+    }
+
+    // If is an object
+    if (operatorDropdownOptions === Object(operatorDropdownOptions) && factNameDropdownOptions) {
+      if (!selectedFactName || operatorDropdownOptions[selectedFactName]) {
+        return operatorDropdownOptions[selectedFactName];
+      }
+    }
+
+    return DEFAULT_OPERATOR_OPTIONS;
+  }, [operatorDropdownOptions, factNameDropdownOptions]);
 
   const valueField = React.useMemo(() => {
     if (Array.isArray(valueDropdownOptions)) {
@@ -130,7 +152,7 @@ function RuleItem({
         name={`${ruleName}_operator`}
         label="Operator"
       >
-        {OPERATOR_SQFORMDROPDOWN_OPTIONS}
+        {operatorOptions}
       </SQFormDropdown>
       {valueField}
     </Grid>
@@ -147,6 +169,8 @@ RuleItem.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
   })),
+  /** Options to be used for the operator dropdown */
+  operatorDropdownOptions: operatorDropdownOptionsPropType,
   /** Options to be used for the value dropdown */
   valueDropdownOptions: valueDropdownOptionsPropType,
   /** Function to update all fact names with new value */

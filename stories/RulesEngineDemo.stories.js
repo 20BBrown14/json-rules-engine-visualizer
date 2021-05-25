@@ -7,7 +7,18 @@ import { withKnobs, boolean } from '@storybook/addon-knobs';
 import {
   SQForm, SQFormButton, SQFormDropdown, SQFormTextField,
 } from '@selectquotelabs/sqform';
-import JSONRulesEngineVisualiser from '../src';
+import { JSONRulesEngineVisualiser } from '../src';
+import {
+  EQUAL_OPERATOR,
+  GREATER_THAN_INCLUSIVE_OPERATOR,
+  GREATER_THAN_OPERATOR,
+  LESS_THAN_INCLUSIVE_OPERATOR,
+  LESS_THAN_OPERATOR,
+  NOT_EQUAL_OPERATOR,
+  NUMERIC_OPERATORS,
+  STRING_OPERATORS,
+} from '../src/constants/operatorConstants';
+import stringArrayToDropdownOptions from '../src/util/stringArrayToDropdownOptions';
 
 export default {
   title: 'Rules Engine Demo',
@@ -71,7 +82,24 @@ const factNameDropdownOptions = [
   { label: 'Mileage', value: 'mileage' },
 ];
 
-const generalFactNameDropdownOptions = [
+const generalOperatorDropdownOptions = stringArrayToDropdownOptions([
+  EQUAL_OPERATOR,
+  NOT_EQUAL_OPERATOR,
+  LESS_THAN_OPERATOR,
+  LESS_THAN_INCLUSIVE_OPERATOR,
+  GREATER_THAN_OPERATOR,
+  GREATER_THAN_INCLUSIVE_OPERATOR,
+]);
+
+const specificOperatorDropdownOptions = {
+  year: stringArrayToDropdownOptions(NUMERIC_OPERATORS),
+  make: stringArrayToDropdownOptions(STRING_OPERATORS),
+  color: stringArrayToDropdownOptions(STRING_OPERATORS),
+  state: stringArrayToDropdownOptions(STRING_OPERATORS),
+  mileage: stringArrayToDropdownOptions(NUMERIC_OPERATORS),
+};
+
+const generalValueDropdownOptions = [
   ...CAR_COLORS,
   ...CAR_MAKES,
   ...STATES,
@@ -84,7 +112,7 @@ const generalFactNameDropdownOptions = [
   { label: '200001', value: '200001' },
 ];
 
-const specificFactNameDropdownOptions = {
+const specificValueOptionDropdowns = {
   year: [
     { label: '2010', value: '2010' },
     { label: '2016', value: '2016' },
@@ -163,13 +191,21 @@ export const rulesEngineDemo = () => {
           <JSONRulesEngineVisualiser
             conditionSchema={TEST_CONDITION_SCHEMA}
             onSubmit={handleRuleSubmit}
-            factNameDropdownOptions={boolean('Use dropdown for fact name', false) ? factNameDropdownOptions : undefined}
+            factNameDropdownOptions={boolean('Use dropdown for FACT NAME', false) ? factNameDropdownOptions : undefined}
+            operatorDropdownOptions={
+              /* eslint-disable-next-line no-nested-ternary */
+              boolean('Use dropdown options for OPERATOR', false)
+                ? (boolean('Use specific dropdown options for OPERATOR', false)
+                  ? specificOperatorDropdownOptions
+                  : generalOperatorDropdownOptions)
+                : undefined
+            }
             valueDropdownOptions={
               /* eslint-disable-next-line no-nested-ternary */
-              boolean('Use dropdown options for value', false)
-                ? (boolean('Use specific dropdown options for value', false)
-                  ? specificFactNameDropdownOptions
-                  : generalFactNameDropdownOptions)
+              boolean('Use dropdown options for VALUE', false)
+                ? (boolean('Use specific dropdown options for VALUE', false)
+                  ? specificValueOptionDropdowns
+                  : generalValueDropdownOptions)
                 : undefined
             }
           />
