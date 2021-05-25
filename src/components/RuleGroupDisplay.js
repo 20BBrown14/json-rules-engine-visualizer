@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import getRuleElementsFromSchema from '../util/getRuleElementsFromSchema';
-import { visualiserSchemaPropType, valueDropdownOptionsPropType } from '../util/proptypes';
+import {
+  visualiserSchemaPropType,
+  valueDropdownOptionsPropType,
+  operatorDropdownOptionsPropType,
+} from '../util/proptypes';
 import buildNewSchemaWithAddition from '../util/buildNewSchemaWithAddition';
 import buildNewSchemaWithRemoval from '../util/buildNewSchemaWithRemoval';
 
@@ -10,6 +14,7 @@ function RuleGroupDisplay({
   livingConditionSchema,
   setLivingConditionSchema,
   factNameDropdownOptions,
+  operatorDropdownOptions,
   valueDropdownOptions,
   updateAllFactNames,
 }) {
@@ -28,6 +33,7 @@ function RuleGroupDisplay({
         addChildToGroup,
         removeChildFromGroup,
         factNameDropdownOptions,
+        operatorDropdownOptions,
         valueDropdownOptions,
         updateAllFactNames,
         true,
@@ -38,6 +44,7 @@ function RuleGroupDisplay({
       addChildToGroup,
       removeChildFromGroup,
       factNameDropdownOptions,
+      operatorDropdownOptions,
       valueDropdownOptions,
       updateAllFactNames,
     ],
@@ -58,6 +65,8 @@ RuleGroupDisplay.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
   })),
+  /** Options to be used for the operator dropdown */
+  operatorDropdownOptions: operatorDropdownOptionsPropType,
   /** Options to be used for the value dropdown */
   valueDropdownOptions: valueDropdownOptionsPropType,
   /** Function to update all fact names */

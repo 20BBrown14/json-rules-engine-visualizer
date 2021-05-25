@@ -4,7 +4,11 @@ import { Grid } from '@material-ui/core';
 import { SQForm, SQFormButton } from '@selectquotelabs/sqform';
 import getInitialValuesFromSchema from '../util/getInitialValuesFromSchema';
 import { getValidationSchemaFromSchema } from '../util/getValidationSchemaFromSchema';
-import { rulesEngineSchemaPropType, valueDropdownOptionsPropType } from '../util/proptypes';
+import {
+  rulesEngineSchemaPropType,
+  operatorDropdownOptionsPropType,
+  valueDropdownOptionsPropType,
+} from '../util/proptypes';
 import buildJSONRulesEngineCondition from '../util/buildJSONRulesEngineCondition';
 import engineSchemaToVisualisationSchema from '../util/engineSchemaToVisualisationSchema';
 import { DEFAULT_CONDITION_SCHEMA } from '../constants/constants';
@@ -14,6 +18,7 @@ function JSONRulesEngineVisualiser({
   conditionSchema,
   onSubmit,
   factNameDropdownOptions,
+  operatorDropdownOptions,
   valueDropdownOptions,
 }) {
   const [livingConditionSchema, setLivingConditionSchema] = React.useState(() => (
@@ -75,6 +80,7 @@ function JSONRulesEngineVisualiser({
         livingConditionSchema={livingConditionSchema}
         setLivingConditionSchema={setLivingConditionSchema}
         factNameDropdownOptions={factNameDropdownOptions}
+        operatorDropdownOptions={operatorDropdownOptions}
         valueDropdownOptions={valueDropdownOptions}
         updateAllFactNames={updateAllFactNames}
       />
@@ -97,6 +103,8 @@ JSONRulesEngineVisualiser.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]).isRequired,
   })),
+  /** Options to be used for the operator dropdown */
+  operatorDropdownOptions: operatorDropdownOptionsPropType,
   /** Options to be used for the value dropdown */
   valueDropdownOptions: valueDropdownOptionsPropType,
 };

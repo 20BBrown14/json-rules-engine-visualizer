@@ -8,6 +8,7 @@ const getRuleElementsFromSchema = (
   addChildToGroup,
   removeChildFromGroup,
   factNameDropdownOptions,
+  operatorDropdownOptions,
   valueDropdownOptions,
   updateAllFactNames,
   isFirstIteration,
@@ -29,6 +30,7 @@ const getRuleElementsFromSchema = (
                 addChildToGroup,
                 removeChildFromGroup,
                 factNameDropdownOptions,
+                operatorDropdownOptions,
                 valueDropdownOptions,
                 updateAllFactNames,
                 false,
@@ -59,6 +61,7 @@ const getRuleElementsFromSchema = (
             ruleName={schema.id}
             removeRuleItem={removeChildFromGroup}
             factNameDropdownOptions={factNameDropdownOptions}
+            operatorDropdownOptions={operatorDropdownOptions}
             valueDropdownOptions={valueDropdownOptions}
             updateAllFactNames={updateAllFactNames}
           />,
