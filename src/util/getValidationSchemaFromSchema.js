@@ -1,9 +1,11 @@
 import * as Yup from 'yup';
-import { TYPE_KEY, GROUP_TYPE, RULE_TYPE, FACT_NAME_KEY } from '../constants/constants';
+import {
+  TYPE_KEY, GROUP_TYPE, RULE_TYPE, FACT_NAME_KEY,
+} from '../constants/constants';
 
 export const getFactNames = (schema) => {
   if (!schema) {
-    return; 
+    return [];
   }
 
   return Object.entries(schema).reduce((acc, [key, value]) => {
@@ -15,22 +17,22 @@ export const getFactNames = (schema) => {
       const childrenFactNames = [];
       schema.children.forEach((child) => {
         childrenFactNames.push(...getFactNames(child));
-      })
+      });
       return [
         ...acc,
         ...childrenFactNames,
       ];
     }
-  
+
     if (key === FACT_NAME_KEY) {
       return [
         ...acc,
         value,
-      ]
+      ];
     }
     return acc;
   }, []);
-}
+};
 
 const getIsDuplicateFactName = (value, factNames) => {
   if (!factNames) {
@@ -43,12 +45,7 @@ const getIsDuplicateFactName = (value, factNames) => {
     modifiedFactNames.splice(currentFactNameIndex, 1);
   }
   return modifiedFactNames.includes(value);
-}
-
-export const getValidationSchemaFromSchema = (schema, factNames) => {
-  const factNamesArray = Object.values(factNames);
-  return buildValidationSchemaFromSchema(schema, factNamesArray);
-}
+};
 
 const buildValidationSchemaFromSchema = (schema, factNames) => {
   if (!schema) {
@@ -79,7 +76,13 @@ const buildValidationSchemaFromSchema = (schema, factNames) => {
       if (value === RULE_TYPE) {
         return {
           ...acc,
-          [`${schema.id}_factName`]: Yup.string().test('isDuplicate', 'Duplicate fact name', (value) => !getIsDuplicateFactName(value, factNames)).required('Required'),
+          [`${schema.id}_factName`]: Yup.string()
+            .test(
+              'isDuplicate',
+              'Duplicate fact name',
+              (formValue) => !getIsDuplicateFactName(formValue, factNames),
+            )
+            .required('Required'),
           [`${schema.id}_operator`]: Yup.string().required('Required'),
           [`${schema.id}_value`]: Yup.string(),
         };
@@ -88,4 +91,9 @@ const buildValidationSchemaFromSchema = (schema, factNames) => {
 
     return acc;
   }, {});
+};
+
+export const getValidationSchemaFromSchema = (schema, factNames) => {
+  const factNamesArray = Object.values(factNames);
+  return buildValidationSchemaFromSchema(schema, factNamesArray);
 };

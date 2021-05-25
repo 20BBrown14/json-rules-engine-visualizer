@@ -35,7 +35,7 @@ function RuleItem({
 
   React.useEffect(() => {
     updateAllFactNames(`${ruleName}_factName`, values[`${ruleName}_factName`]);
-  }, [updateAllFactNames, values, ruleName])
+  }, [updateAllFactNames, values, ruleName]);
 
   const handleFactNameDropdownChange = React.useCallback(({ target: { value: newFactName } }) => {
     setSelectedFactName(newFactName);

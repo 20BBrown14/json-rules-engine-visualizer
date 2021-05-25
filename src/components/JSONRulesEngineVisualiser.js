@@ -21,7 +21,6 @@ function JSONRulesEngineVisualiser({
   ));
 
   const [allFactNames, setAllFactNames] = React.useState({});
-  console.log('allFactNames', allFactNames)
 
   const initialValues = React.useMemo(() => (
     getInitialValuesFromSchema(livingConditionSchema)
@@ -57,13 +56,10 @@ function JSONRulesEngineVisualiser({
   });
 
   const updateAllFactNames = React.useCallback((factNameKey, factNameValue) => {
-    console.log('updateAllFactNames', factNameKey, factNameValue)
-    setAllFactNames((previousFactNames) => {
-      return {
-        ...previousFactNames,
-        [factNameKey]: factNameValue,
-      }
-    })
+    setAllFactNames((previousFactNames) => ({
+      ...previousFactNames,
+      [factNameKey]: factNameValue,
+    }));
   }, []);
 
   return (
