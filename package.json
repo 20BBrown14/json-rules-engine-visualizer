@@ -16,22 +16,27 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^4.0.0-alpha.11",
-    "@selectquotelabs/sqform": "^4.0.0",
+    "@selectquotelabs/sqform": "^4.5.17",
     "@selectquotelabs/sqhooks": "^1.8.0",
+    "@tippy.js/react": "^3.1.1",
+    "ag-grid-community": "^22.1.1",
+    "ag-grid-react": "^22.1.1",
     "json-rules-engine": "^6.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-app-polyfill": "^2.0.0",
+    "react-datepicker": "^2.13.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^16.14.0",
     "react-refresh": "^0.8.3",
-    "scplus-shared-components": "https://npm-public.selectquotelabs.com/scplus-shared-components/5.4.0",
+    "react-weekly-schedule": "0.0.0-development",
+    "scplus-shared-components": "https://npm-public.selectquotelabs.com/scplus-shared-components/7.0.6",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
   },
   "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
