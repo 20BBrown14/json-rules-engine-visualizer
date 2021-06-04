@@ -5,6 +5,8 @@ import {LocalizationProvider} from '@material-ui/pickers';
 import MomentAdapter from '@material-ui/pickers/adapter/moment';
 import {muiTheme} from 'scplus-shared-components';
 
+import './styles/index.css';
+
 // For Storybook usage ONLY
 const centerStyle = {
   display: 'flex',
