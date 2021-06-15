@@ -37,7 +37,7 @@ function RuleItem({
   const [selectedFactName, setSelectedFactName] = React.useState(initialValues[`${ruleName}_factName`]);
 
   React.useEffect(() => {
-    updateAllFactNames(`${ruleName}_factName`, values[`${ruleName}_factName`]);
+    updateAllFactNames(`${ruleName}_factName`, values[`${ruleName}_factName`], 'update');
   }, [updateAllFactNames, values, ruleName]);
 
   const handleFactNameDropdownChange = React.useCallback(({ target: { value: newFactName } }) => {
@@ -133,6 +133,11 @@ function RuleItem({
     );
   }, [valueDropdownOptions, factNameDropdownOptions, selectedFactName]);
 
+  const handleDeleteClick = React.useCallback(() => {
+    removeRuleItem(ruleName);
+    updateAllFactNames(`${ruleName}_factName`, values[`${ruleName}_factName`], 'delete');
+  }, [removeRuleItem, updateAllFactNames, ruleName, values]);
+
   // If the initialValues don't exist don't render anything
   // Check needs to be here to ensure hooks are rendered in same order
   if (!initialValue) {
@@ -142,7 +147,7 @@ function RuleItem({
   return (
     <Grid container spacing={2} className={itemClasses.containerGrid}>
       <Grid item sm={1}>
-        <IconButton className={itemClasses.deleteIcon} onClick={() => { removeRuleItem(ruleName); }}>
+        <IconButton className={itemClasses.deleteIcon} onClick={handleDeleteClick}>
           <DeleteIcon />
         </IconButton>
       </Grid>
