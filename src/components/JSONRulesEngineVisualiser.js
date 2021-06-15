@@ -20,12 +20,20 @@ function JSONRulesEngineVisualiser({
   factNameDropdownOptions,
   operatorDropdownOptions,
   valueDropdownOptions,
+  enableReinitialize = false,
 }) {
   const [livingConditionSchema, setLivingConditionSchema] = React.useState(() => (
     engineSchemaToVisualisationSchema(conditionSchema) || DEFAULT_CONDITION_SCHEMA
   ));
 
   const [allFactNames, setAllFactNames] = React.useState({});
+
+  React.useEffect(() => {
+    if (enableReinitialize) {
+      setLivingConditionSchema(engineSchemaToVisualisationSchema(conditionSchema) || DEFAULT_CONDITION_SCHEMA);
+      setAllFactNames({});
+    }
+  }, [enableReinitialize, conditionSchema]);
 
   const initialValues = React.useMemo(() => (
     getInitialValuesFromSchema(livingConditionSchema)
@@ -60,11 +68,26 @@ function JSONRulesEngineVisualiser({
     onSubmit(JSONRulesEngineCondition);
   });
 
-  const updateAllFactNames = React.useCallback((factNameKey, factNameValue) => {
-    setAllFactNames((previousFactNames) => ({
-      ...previousFactNames,
-      [factNameKey]: factNameValue,
-    }));
+  const updateAllFactNames = React.useCallback((factNameKey, factNameValue, updateType) => {
+    if (updateType === 'update' || updateType === 'addition') {
+      setAllFactNames((previousFactNames) => ({
+        ...previousFactNames,
+        [factNameKey]: factNameValue,
+      }));
+    } else if (updateType === 'delete') {
+      setAllFactNames((previousFactNames) => (
+        Object.entries(previousFactNames).reduce((acc, [key, value]) => {
+          if (key === factNameKey) {
+            return acc;
+          }
+
+          return {
+            ...acc,
+            [key]: value,
+          };
+        }, {})
+      ));
+    }
   }, []);
 
   return (
@@ -107,6 +130,8 @@ JSONRulesEngineVisualiser.propTypes = {
   operatorDropdownOptions: operatorDropdownOptionsPropType,
   /** Options to be used for the value dropdown */
   valueDropdownOptions: valueDropdownOptionsPropType,
+  /** Whether to allow reinitialization */
+  enableReinitialize: PropTypes.bool,
 };
 
 export default JSONRulesEngineVisualiser;

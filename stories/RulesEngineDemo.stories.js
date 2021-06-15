@@ -1,12 +1,5 @@
 import React from 'react';
-import * as Yup from 'yup';
-import { Engine, Rule } from 'json-rules-engine';
-import { Card, Grid, Typography } from '@material-ui/core';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { withKnobs, boolean } from '@storybook/addon-knobs';
-import {
-  SQForm, SQFormButton, SQFormDropdown, SQFormTextField,
-} from '@selectquotelabs/sqform';
+import { Card, Grid } from '@material-ui/core';
 import { JSONRulesEngineVisualiser } from '../src';
 import {
   EQUAL_OPERATOR,
@@ -19,10 +12,38 @@ import {
   STRING_OPERATORS,
 } from '../src/constants/operatorConstants';
 import stringArrayToDropdownOptions from '../src/util/stringArrayToDropdownOptions';
+import createDocsPage from './utils/createDocsPage';
 
 export default {
-  title: 'Rules Engine Demo',
-  decorators: [withKnobs],
+  title: 'JSON Rules Engine Visualiser Demo',
+  component: JSONRulesEngineVisualiser,
+  parameters: {
+    docs: { page: createDocsPage({ showStories: false }) },
+  },
+};
+
+const TEST_CONDITION_SCHEMA = {
+  all: [{
+    fact: 'year',
+    operator: 'greaterThan',
+    value: '2016',
+  },
+  {
+    fact: 'make',
+    operator: 'equal',
+    value: 'ford',
+  },
+  {
+    fact: 'color',
+    operator: 'equal',
+    value: 'red',
+  },
+  {
+    fact: 'state',
+    operator: 'equal',
+    value: 'kansas',
+  },
+  ],
 };
 
 const CAR_MAKES = [
@@ -49,30 +70,6 @@ const STATES = [
   { label: 'Arizona', value: 'arizona' },
   { label: 'New York', value: 'new york' },
 ];
-
-const TEST_CONDITION_SCHEMA = {
-  all: [{
-    fact: 'year',
-    operator: 'greaterThan',
-    value: '2016',
-  },
-  {
-    fact: 'make',
-    operator: 'equal',
-    value: 'ford',
-  },
-  {
-    fact: 'color',
-    operator: 'equal',
-    value: 'red',
-  },
-  {
-    fact: 'state',
-    operator: 'equal',
-    value: 'kansas',
-  },
-  ],
-};
 
 const factNameDropdownOptions = [
   { label: 'Year', value: 'year' },
@@ -112,7 +109,7 @@ const generalValueDropdownOptions = [
   { label: '200001', value: '200001' },
 ];
 
-const specificValueOptionDropdowns = {
+const specificValueOption = {
   year: [
     { label: '2010', value: '2010' },
     { label: '2016', value: '2016' },
@@ -124,135 +121,64 @@ const specificValueOptionDropdowns = {
   state: STATES,
 };
 
-const engine = new Engine();
+const defaultArgs = {
+  conditionSchema: TEST_CONDITION_SCHEMA,
+  // eslint-disable-next-line no-console
+  onSubmit: () => { console.log('submitted'); },
+  factNameDropdownOptions: undefined,
+  operatorDropdownOptions: undefined,
+  valueDropdownOptions: undefined,
+};
 
-export const rulesEngineDemo = () => {
-  const [rulesSchema, setRulesSchema] = React.useState(null);
-
-  const initialValues = {
-    year: '2017',
-    make: 'ford',
-    color: 'red',
-    state: 'kansas',
-    mileage: '',
-  };
-
-  const validationSchema = {
-    year: Yup.number().typeError('Must be number').required('Required'),
-    make: Yup.string().required('Required'),
-    color: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    mileage: Yup.number().typeError('Must be number').required('Required'),
-  };
-
-  const handleFormSubmit = (formValues) => {
-    engine.run(formValues).then(
-      (results) => {
-        // eslint-disable-next-line no-console
-        console.log('isWarrantyValid results', results);
-
-        const isWarrantyValidEvent = results?.results?.find((event) => event?.event?.type === 'warranty-query');
-
-        // eslint-disable-next-line no-console
-        console.log('isWarrantyValidEvent', isWarrantyValidEvent);
-        const isWarrantyValid = isWarrantyValidEvent?.event?.params?.isWarrantyValid || false;
-
-        // eslint-disable-next-line no-alert
-        window.alert(`Your vehicle is${isWarrantyValid ? '' : ' not'} valid for warranty!`);
-      },
-    );
-  };
-
-  const handleRuleSubmit = (newRulesSchema) => {
-    if (rulesSchema) {
-      engine.removeRule(rulesSchema);
-    }
-
-    const newRule = new Rule({
-      conditions: { ...newRulesSchema },
-      event: {
-        type: 'warranty-query',
-        params: {
-          isWarrantyValid: true,
-        },
-      },
-    });
-    engine.addRule(newRule);
-    setRulesSchema(newRule);
-
-    // eslint-disable-next-line no-console
-    console.log(engine);
-  };
-
-  return (
+const Template = (args) => (
+  (
     <Grid container spacing={2}>
       <Grid item sm={12}>
         <Card raised style={{ padding: 16, marginTop: 300 }}>
-          <JSONRulesEngineVisualiser
-            conditionSchema={TEST_CONDITION_SCHEMA}
-            onSubmit={handleRuleSubmit}
-            factNameDropdownOptions={boolean('Use dropdown for FACT NAME', false) ? factNameDropdownOptions : undefined}
-            operatorDropdownOptions={
-              /* eslint-disable-next-line no-nested-ternary */
-              boolean('Use dropdown options for OPERATOR', false)
-                ? (boolean('Use specific dropdown options for OPERATOR', false)
-                  ? specificOperatorDropdownOptions
-                  : generalOperatorDropdownOptions)
-                : undefined
-            }
-            valueDropdownOptions={
-              /* eslint-disable-next-line no-nested-ternary */
-              boolean('Use dropdown options for VALUE', false)
-                ? (boolean('Use specific dropdown options for VALUE', false)
-                  ? specificValueOptionDropdowns
-                  : generalValueDropdownOptions)
-                : undefined
-            }
-          />
-        </Card>
-      </Grid>
-      <Grid item sm={12}>
-        <Card raised style={{ padding: 16 }}>
-          <Typography color={rulesSchema ? 'primary' : 'error'}>
-            {`The rules engine${rulesSchema ? ' does' : ' DOES NOT'} have a rule`}
-          </Typography>
-          <SQForm
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleFormSubmit}
-          >
-            <SQFormTextField
-              name="year"
-              label="Year"
-            />
-            <SQFormDropdown
-              name="make"
-              label="Make"
-            >
-              {CAR_MAKES}
-            </SQFormDropdown>
-            <SQFormDropdown
-              name="color"
-              label="Color"
-            >
-              {CAR_COLORS}
-            </SQFormDropdown>
-            <SQFormDropdown
-              name="state"
-              label="State"
-            >
-              {STATES}
-            </SQFormDropdown>
-            <SQFormTextField
-              name="mileage"
-              label="Mileage"
-            />
-            <SQFormButton>
-              Submit
-            </SQFormButton>
-          </SQForm>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <JSONRulesEngineVisualiser {...args} />
         </Card>
       </Grid>
     </Grid>
-  );
+  )
+);
+
+export const Default = Template.bind({});
+Default.args = defaultArgs;
+
+export const WithFactNameOptions = Template.bind({});
+WithFactNameOptions.args = {
+  ...defaultArgs,
+  title: 'With General Fact Name Options',
+  factNameDropdownOptions,
+};
+
+export const WithGeneralOperatorOptions = Template.bind({});
+WithGeneralOperatorOptions.args = {
+  ...defaultArgs,
+  title: 'With General Operator Options',
+  operatorDropdownOptions: generalOperatorDropdownOptions,
+};
+
+export const WithSpecificOperatorOptions = Template.bind({});
+WithSpecificOperatorOptions.args = {
+  ...defaultArgs,
+  title: 'With Specific Operator Options',
+  factNameDropdownOptions,
+  operatorDropdownOptions: specificOperatorDropdownOptions,
+};
+
+export const WithGeneralValueOptions = Template.bind({});
+WithGeneralValueOptions.args = {
+  ...defaultArgs,
+  title: 'With General Value Options',
+  valueDropdownOptions: generalValueDropdownOptions,
+};
+
+export const WithSpecificValueOptions = Template.bind({});
+WithSpecificValueOptions.args = {
+  ...defaultArgs,
+  title: 'With Specific Value Options',
+  factNameDropdownOptions,
+  valueDropdownOptions: specificValueOption,
 };
